@@ -15,7 +15,7 @@ fi
 NAGIOS_ADDRESS=$1
 HOST=$2
 INTERVAL=$3
-
+sudo chmod u+x /usr/local/src/tools/nagios-etc/cli/ -R	
 /usr/local/src/tools/nagios-etc/cli/performance_report.py stop
 CMD="/usr/local/src/tools/nagios-etc/cli/performance_report.py start --server $NAGIOS_ADDRESS --hostname $HOST --send_rate $INTERVAL | tee /tmp/output_performance_report.txt 2>&1"
 eval $CMD
