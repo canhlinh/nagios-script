@@ -19,7 +19,7 @@ sudo groupadd nagcmd
 sudo usermod -a -G nagcmd nagios
 sudo usermod -a -G nagcmd www-data
 
-cd cd nagios-4.0.2
+cd nagios-4.0.2
 sudo ./configure --with-command-group=nagcmd
 sudo make all
 sudo make install
@@ -32,7 +32,7 @@ sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 sudo service apache2 reload
 
 echo 'install nagios plugin'
-cd cd ../nagios-plugins-1.5
+cd ../nagios-plugins-1.5
 sudo ./configure --with-nagios-user=nagios --with-nagios-group=nagios
 sudo make
 sudo make install
