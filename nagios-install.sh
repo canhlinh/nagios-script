@@ -6,10 +6,10 @@ sudo apt-get -y install apache2 libapache2-mod-php5 build-essential libgd2-xpm-d
 
 cd /usr/local/src
 sudo wget -nc http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.0.2.tar.gz
-sudo wget -nc http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.5.1.tar.gz
+sudo wget -nc http://assets.nagios.com/downloads/nagiosplugins/nagios-plugins-1.5.tar.gz
 #wget -nc http://sourceforge.net/projects/nagiosgraph/files/nagiosgraph/1.4.4/nagiosgraph-1.4.4.tar.gz
-sudo tar xzf nagios-3.4.0.tar.gz
-sudo tar xzf nagios-plugins-1.4.15.tar.gz
+sudo tar xzf nagios-4.0.2.tar.gz
+sudo tar xzf nagios-plugins-1.5.tar.gz
 #tar xzf nagiosgraph-1.4.4.tar.gz
 
 sudo useradd -m -s /bin/bash nagios
@@ -31,7 +31,8 @@ echo 'Enter the password for the user nagiosadmin'
 sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 sudo service apache2 reload
 
-cd cd ../nagios-3.5.1
+echo 'install nagios plugin'
+cd cd ../nagios-plugins-1.5
 sudo ./configure --with-nagios-user=nagios --with-nagios-group=nagios
 sudo make
 sudo make install
