@@ -119,7 +119,8 @@ then
         /usr/local/src/tools/nagios-etc/cli/server_up.sh $NAGIOS_ADDRESS $INSTANCE_TYPE
     fi
 fi 
-
-chmod +x ~/tools/installation-scripts/bbb-deploy/start-monitor.sh
-~/tools/installation-scripts/bbb-deploy/start-monitor.sh $NAGIOS_ADDRESS $HOST $INTERVAL
+cd /usr/local/src/tools
+sudo wget -nc https://raw.github.com/canhlinh/nagios-script/master/start-monitor.sh
+chmod +x start-monitor.sh
+start-monitor.sh $NAGIOS_ADDRESS $HOST $INTERVAL
 
