@@ -2,8 +2,7 @@
 
 
 sudo apt-get update
-sudo apt-get -y install apache2 libapache2-mod-php5 build-essential libgd2-xpm-dev subversion git-core xinetd rrdtool librrds-perl
-
+sudo apt-get -y install apache2 libapache2-mod-php5 build-essential daemon libgd2-xpm-dev subversion git-core xinetd rrdtool librrds-perl
 cd /usr/local/src
 sudo wget -nc http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.0.2.tar.gz
 sudo wget -nc http://assets.nagios.com/downloads/nagiosplugins/nagios-plugins-1.5.tar.gz
@@ -45,9 +44,9 @@ sudo apt-get -y install python-argparse
 sudo mkdir tools
 cd tools
 git clone https://github.com/canhlinh/nagios-etc.git
-sudo cp -r tools/nagios-etc/libexec/nagios-hosts/ /usr/local/nagios/libexec/
-sudo cp -r tools/nagios-etc/libexec/emeeting/ /usr/local/nagios/libexec/
-sudo cp -r tools/nagios-etc/etc/objects/emeeting/ /usr/local/nagios/etc/objects/
+sudo cp -r nagios-etc/libexec/nagios-hosts/ /usr/local/nagios/libexec/
+sudo cp -r nagios-etc/libexec/emeeting/ /usr/local/nagios/libexec/
+sudo cp -r nagios-etc/etc/objects/emeeting/ /usr/local/nagios/etc/objects/
 sudo cp /usr/local/nagios/etc/nagios.cfg /usr/local/nagios/etc/nagios.cfg.original
 # done on bbb-deploy/install-monitor.sh
 # sudo cp /usr/local/nagios/etc/nsca.cfg /usr/local/nagios/etc/nsca.cfg.backup
@@ -74,3 +73,4 @@ sudo chown -R nagios:nagios /usr/local/nagios
 
 sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 sudo service nagios start
+echo 'neu xuat hien loi funtions not found thi cau hinh lai file /etc/init.d/nagios'
