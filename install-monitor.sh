@@ -121,6 +121,6 @@ then
 fi 
 cd /usr/local/src/tools
 sudo wget -nc https://raw.github.com/canhlinh/nagios-script/master/start-monitor.sh
-chmod +x start-monitor.sh
-start-monitor.sh $NAGIOS_ADDRESS $HOST $INTERVAL
+chmod +x /usr/local/src/tools/start-monitor.sh
+/usr/local/src/tools/start-monitor.sh $NAGIOS_ADDRESS $HOST $INTERVAL
 
