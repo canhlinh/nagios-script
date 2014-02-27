@@ -41,7 +41,7 @@ echo "Updating the Ubuntu package repository"
 sudo apt-get update > /dev/null
 sudo apt-get -y install git-core python-dev python-argparse subversion
 
-
+mkdir -p /usr/local/src/tools/
 cd /usr/local/src/tools/
 if [ -d "nagios-etc" ]
 then
@@ -49,7 +49,8 @@ then
     cli/performance_report.py stop
     cd ..
 else
-    echo 'vui long cai dat nagios theo truoc tu shell'
+    echo 'clone nagios etc'
+    git clone https://github.com/canhlinh/nagios-etc.git
 	exit 1
 fi
 
@@ -106,7 +107,7 @@ sudo chmod a+r /usr/local/nagios/etc/send_nsca.cfg
 if [ $2 != "nagios" ]
 then
     echo "Sending the Nagios packet to start monitoring"
-    if [ $2 == "bigbluebutton" ]
+    if [ $2 == "emeeting" ]
     then
         CMD="/usr/local/src/tools/nagios-etc/cli/check_bbb_salt.sh $NAGIOS_ADDRESS $INTERVAL | tee /tmp/output_check_bbb_salt.txt 2>&1"
         eval $CMD
