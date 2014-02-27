@@ -112,10 +112,10 @@ then
         CMD="/usr/local/src/tools/nagios-etc/cli/check_bbb_salt.sh $NAGIOS_ADDRESS $INTERVAL | tee /tmp/output_check_bbb_salt.txt 2>&1"
         sudo eval $CMD
         # add a cron job to check if there's any modification on the BigBlueButton URL or salt
-        sudo crontab -l | grep -v "check_bbb_salt.sh" > cron.jobs
+        crontab -l | grep -v "check_bbb_salt.sh" > cron.jobs
         echo "*/5 * * * * $CMD" >> cron.jobs
-        sudo crontab cron.jobs
-        sudo rm cron.jobs
+        crontab cron.jobs
+        rm cron.jobs
     else
         sudo /usr/local/src/tools/nagios-etc/cli/server_up.sh $NAGIOS_ADDRESS $INSTANCE_TYPE
     fi
