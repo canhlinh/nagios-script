@@ -110,7 +110,7 @@ then
     then
         echo "Emeeting children Server sending the Nagios packet to start monitoring"
         CMD="/usr/local/src/tools/nagios-etc/cli/check_bbb_salt.sh $NAGIOS_ADDRESS $INTERVAL | tee /tmp/output_check_bbb_salt.txt 2>&1"
-        sudo eval $CMD
+        eval $CMD
         # add a cron job to check if there's any modification on the BigBlueButton URL or salt
         crontab -l | grep -v "check_bbb_salt.sh" > cron.jobs
         echo "*/5 * * * * $CMD" >> cron.jobs
