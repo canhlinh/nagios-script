@@ -51,7 +51,7 @@ then
 else
     echo 'clone nagios etc'
     git clone https://github.com/canhlinh/nagios-etc.git
-	exit 1
+    sudo chmod u+x -R /usr/local/src/tools/
 fi
 
 cd /usr/local/src
