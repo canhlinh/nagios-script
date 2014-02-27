@@ -38,15 +38,14 @@ INSTANCE_TYPE=$2
 INTERVAL=$3
 
 echo "Updating the Ubuntu package repository"
-sudo apt-get update > /dev/null
 sudo apt-get -y install git-core python-dev python-argparse subversion
 
-mkdir -p /usr/local/src/tools/
+sudo mkdir -p /usr/local/src/tools/
 cd /usr/local/src/tools/
 if [ -d "nagios-etc" ]
 then
     cd nagios-etc/
-    cli/performance_report.py stop
+    sudo cli/performance_report.py stop
     cd ..
 else
     echo 'clone nagios etc'
@@ -109,15 +108,16 @@ then
     echo "Sending the Nagios packet to start monitoring"
     if [ $2 == "emeeting" ]
     then
+        echo "Emeeting children Server sending the Nagios packet to start monitoring"
         CMD="/usr/local/src/tools/nagios-etc/cli/check_bbb_salt.sh $NAGIOS_ADDRESS $INTERVAL | tee /tmp/output_check_bbb_salt.txt 2>&1"
-        eval $CMD
+        sudo eval $CMD
         # add a cron job to check if there's any modification on the BigBlueButton URL or salt
-        crontab -l | grep -v "check_bbb_salt.sh" > cron.jobs
+        sudo crontab -l | grep -v "check_bbb_salt.sh" > cron.jobs
         echo "*/5 * * * * $CMD" >> cron.jobs
-        crontab cron.jobs
-        rm cron.jobs
+        sudo crontab cron.jobs
+        sudo rm cron.jobs
     else
-        /usr/local/src/tools/nagios-etc/cli/server_up.sh $NAGIOS_ADDRESS $INSTANCE_TYPE
+        sudo /usr/local/src/tools/nagios-etc/cli/server_up.sh $NAGIOS_ADDRESS $INSTANCE_TYPE
     fi
 fi 
 cd /usr/local/src/tools
