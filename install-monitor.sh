@@ -89,7 +89,7 @@ then
     sudo cp sample-config/nsca.cfg /usr/local/nagios/etc/
     sudo chmod a+r /usr/local/nagios/etc/nsca.cfg
     # install as XINETD service
-    sudo cp ~/downloads/$NSCA/sample-config/nsca.xinetd /etc/xinetd.d/nsca
+    sudo cp sample-config/nsca.xinetd /etc/xinetd.d/nsca
     sudo sed -i "s:\tonly_from.*:#\0:g" /etc/xinetd.d/nsca
     sudo chmod a+r /etc/xinetd.d/nsca
     sudo service xinetd restart
